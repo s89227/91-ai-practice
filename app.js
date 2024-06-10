@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+const expensesRouter = require('./routes/expenses');
+
+app.use('/expenses', expensesRouter);
 });
 
 app.listen(port, () => {
